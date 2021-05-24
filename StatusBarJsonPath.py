@@ -18,10 +18,7 @@ class StatusBarJsonPath(sublime_plugin.EventListener):
 		if len(json_paths):
 			view.set_status(self.KEY_SIZE, "JSONPath: " + ", ".join(json_paths))
 		else:
-			view.erase_status(self.KEY_SIZE)\
-
-
-
+			view.erase_status(self.KEY_SIZE)
 
 	on_selection_modified_async = update_json_path
 
@@ -48,9 +45,11 @@ def get_json_path(view):
 			return None, None
 
 		text = view.substr(scope)
+		jsonpath = json_path_to(text, end)
 
-		json_paths.append(json_path_to(text, end))
+		if jsonpath: json_paths.append(jsonpath)
 	return json_paths
+
 # ported from https://github.com/nidu/vscode-copy-json-path/blob/master/src/jsPathTo.ts
 def json_path_to(text,offset):
 	pos = 0
@@ -91,7 +90,7 @@ def path_to_string(path):
 	for frame in path:
 		if frame['col_type'] == 'object':
 			if 'key' in frame:
-				if re.match(r"^[a-zA-Z$#@&%~\-_][a-zA-Z\d$#@&%~\-_]*$", frame['key']):
+				if re.match(r"^[a-zA-Z0-9_][a-zA-Z0-9_]*$", frame['key']):
 					if s: s += '.'
 					s += frame['key']
 				else:
@@ -120,6 +119,3 @@ def find_end_quote(text, i):
 		i += 1
 
 	return i;
-
-
-#print(json_path_to('{"test":["hallo",123]}', 17))
