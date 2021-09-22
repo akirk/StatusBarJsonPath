@@ -57,7 +57,6 @@ def json_path_to(text,offset):
 	is_in_key = False
 
 	while pos < offset:
-		# print('json_path_to:step', pos, stack, is_in_key)
 		start_pos = pos
 		if text[pos] == '"':
 			s, new_pos = read_string(text, pos)
@@ -104,13 +103,11 @@ def path_to_string(path):
 def read_string(text, pos):
 	p = pos + 1
 	i = find_end_quote(text, p)
-	# print('read_string: text:', text[p:i], i + 1 )
 	return text[p:i], i + 1
 
 # Find the next end quote
 def find_end_quote(text, i):
 	while i < len(text):
-		# print( 'find_end_quote: ' + str(i) + ' : ' + text[i])
 		if text[i] == '"':
 			bt = i;
 			# Handle backtracking to find if this quote is escaped (or, if the escape is escaping a slash)
