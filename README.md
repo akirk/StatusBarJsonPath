@@ -31,8 +31,8 @@ In this scenario the plugin will display/copy the following JSONPaths:
 
 ## Installation
 
-You can install the package manually like this (it has been submitted to https://packagecontrol.io/ but not accepted yet):
+You can install the package manually like this (it has been submitted to https://packagecontrol.io/ but it has not been accepted yet):
 
-1. Click the Preferences > Browse Packages… menu
-2. Download https://github.com/akirk/StatusBarJsonPath/archive/refs/heads/main.zip and extract it into that directory (it should then have a subfolde StatusBarJsonPath-main)
-3. Restart Sublime Text
+1. Click the *Preferences >Browse Packages…* menu, this should open a folder `Packages`.
+2. Download https://github.com/akirk/StatusBarJsonPath/archive/refs/heads/main.zip and extract it into that directory (it should then have a subfolder `StatusBarJsonPath-main`).
+3. Restart Sublime Text.
