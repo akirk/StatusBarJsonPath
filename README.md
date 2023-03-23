@@ -31,7 +31,12 @@ In this scenario the plugin will display/copy the following JSONPaths:
 
 ## Installation
 
-You can install the package manually like this (I have submitted it to https://packagecontrol.io/ but it has not been accepted yet):
+On PackageControl it's called `Status Bar JsonPath`: https://packagecontrol.io/packages/Status%20Bar%20JsonPath
+
+1. Run `Package Control: Advanced Install Package`
+2. Enter `Status Bar JsonPath`
+
+You can also install the package manually like this:
 
 1. Click the *Preferences >Browse Packages…* menu, this should open a folder `Packages`.
 2. Download https://github.com/akirk/StatusBarJsonPath/archive/refs/heads/main.zip and extract it into that directory (it should then have a subfolder `StatusBarJsonPath-main`).
