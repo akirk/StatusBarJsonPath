@@ -85,6 +85,7 @@ def json_path_to(text,offset):
 				frame = stack[-1]
 				if frame['col_type'] == 'object':
 					is_in_key = True
+					frame.pop('key', None)
 				elif frame['col_type'] == 'array':
 					frame['index'] += 1
 
