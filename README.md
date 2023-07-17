@@ -17,14 +17,14 @@ Given the following JSON object:
 	}
 }
 ```
-In this scenario the plugin will display/copy the following JSONPaths:
+In this scenario the plugin will display/copy the following JSONPaths (all directly queryable in [`jq`](https://jqlang.github.io/jq/) for matching results):
 
-- Cursor inside "name": `name`
-- Cursor inside "Hello World": `name`
-- Cursor inside "tags": `tags`
-- Cursor inside "example": `tags[0]`
-- Cursor inside "metadata": `metadata`
-- Cursor inside "author": `metadata.author`
+- Cursor inside "name": `.name`
+- Cursor inside "Hello World": `.name`
+- Cursor inside "tags": `.tags`
+- Cursor inside "example": `.tags[0]`
+- Cursor inside "metadata": `.metadata`
+- Cursor inside "author": `.metadata.author`
 
 ## Demo
 ![screen recording](statusbarjsonpath.gif)
