@@ -9,6 +9,9 @@ class CopyJsonPathCommand(sublime_plugin.TextCommand):
 		print(json_paths)
 		if len(json_paths):
 			sublime.set_clipboard( ", ".join(json_paths))
+			self.view.window().status_message('Copied json path to clipboard.')
+		else:
+			self.view.window().status_message('No json path to copy to the clipboard.')
 
 class StatusBarJsonPath(sublime_plugin.EventListener):
 	KEY_SIZE = "JSONPath"
