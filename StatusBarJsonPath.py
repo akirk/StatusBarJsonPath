@@ -80,6 +80,10 @@ def json_path_to(text,offset):
 			stack.append(dict(col_type='array',index=0))
 		elif text[pos] == '}' or text[pos] == ']':
 			stack.pop()
+			if len(stack):
+				frame = stack[-1]
+				if frame['col_type'] == 'object':
+					frame.pop('key', None)
 		elif text[pos] == ',':
 			if len(stack):
 				frame = stack[-1]
