@@ -10,6 +10,10 @@ class CopyJsonPathCommand(sublime_plugin.TextCommand):
 		if len(json_paths):
 			sublime.set_clipboard( ", ".join(json_paths))
 
+	def is_visible(self):
+		return any(self.view.match_selector(region.a, 'source.json') for region in self.view.sel())
+
+
 class StatusBarJsonPath(sublime_plugin.EventListener):
 	KEY_SIZE = "JSONPath"
 
