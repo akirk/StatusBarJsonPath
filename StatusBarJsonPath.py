@@ -97,6 +97,8 @@ def path_to_string(path):
 					s += '["' + frame['key'] + '"]'
 		else:
 			s += '[' + str(frame['index']) + ']'
+	if s != '':
+		s = '.' + s
 	return s
 
 
