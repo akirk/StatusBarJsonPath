@@ -69,9 +69,12 @@ def json_path_to(text,offset):
 			s, new_pos = read_string(text, pos)
 			if len(stack):
 				frame = stack[-1]
-				if frame['col_type'] == 'object' and is_in_key:
-					frame['key'] = s
-					is_in_key = False
+				if frame['col_type'] == 'object':
+					if is_in_key:
+						frame['key'] = s
+						is_in_key = False
+					elif new_pos <= offset:
+						frame.pop('key', None)
 			pos = new_pos
 		elif text[pos] == '{':
 			stack.append(dict(col_type='object'))
@@ -80,11 +83,16 @@ def json_path_to(text,offset):
 			stack.append(dict(col_type='array',index=0))
 		elif text[pos] == '}' or text[pos] == ']':
 			stack.pop()
+			if len(stack):
+				frame = stack[-1]
+				if frame['col_type'] == 'object':
+					frame.pop('key', None)
 		elif text[pos] == ',':
 			if len(stack):
 				frame = stack[-1]
 				if frame['col_type'] == 'object':
 					is_in_key = True
+					frame.pop('key', None)
 				elif frame['col_type'] == 'array':
 					frame['index'] += 1
 
